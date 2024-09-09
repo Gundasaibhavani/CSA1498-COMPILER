@@ -2,13 +2,8 @@
 #include <string.h>
 #define SIZE 10
 int main() {
-    char non_terminal;
-    char beta, alpha;
-    int num;
-    char production[10][SIZE];
-    int index = 3;
-    char left_recursive[10][SIZE];
-    int left_recursive_count = 0;
+    char non_terminal,beta, alpha,production[10][SIZE],left_recursive[10][SIZE];
+    int left_recursive_count = 0,index = 3;
     printf("Enter the grammar as E->E-A :\n");
     for (int i = 0; i < 1; i++) {
         scanf("%s", production[i]);
@@ -29,8 +24,6 @@ int main() {
                 printf("\n%c\'->%c%c%c\'|e\n", non_terminal , alpha,beta, non_terminal);
                 sprintf(left_recursive[left_recursive_count], "%c->%c%c\'\n%c\'->%c%c\'|e\n", non_terminal, beta, non_terminal, non_terminal, alpha, non_terminal);
                 left_recursive_count++;
-            } else {
-                printf(" can't be reduced\n");
             }
         } else {
             printf(" is not left recursive.\n");
@@ -46,13 +39,6 @@ int main() {
                 strcpy(left_recursive[j], temp);
             }
         }
-    }
-    if (left_recursive_count > 0) {
-        for (int i = 0; i < left_recursive_count; i++) {
-            printf(" ");
-        }
-    } else {
-        printf("\nNo left-recursive productions found.\n");
     }
     return 0;
 }
